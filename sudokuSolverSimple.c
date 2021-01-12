@@ -38,11 +38,11 @@ int isLegal(int grid[SIZE][SIZE], int row, int col, int num) {
         }
     }
 
-   // Check if number is present within the smaller 3x3 squares; if it is, return 0
-	int startRow = row - row % (SIZE / 3), 
-				startCol = col - col % (SIZE / 3);
+    // Check if number is present within the smaller 3x3 squares; if it is, return 0
+    int startRow = row - row % (SIZE / 3); 
+    int startCol = col - col % (SIZE / 3);
 
-	for (int i = 0; i < (SIZE / 3); i++) {
+    for (int i = 0; i < (SIZE / 3); i++) {
         for (int j = 0; j < (SIZE / 3); j++) {
             if (grid[i + startRow][j + startCol] == num) {
                 return 0;
@@ -51,7 +51,7 @@ int isLegal(int grid[SIZE][SIZE], int row, int col, int num) {
     }
 
 
-    // If the number isn't present within the row or column, it is legal, return 1
+    // If the number isn't present within the row, column, or square, it is legal: return 1
     return 1; 
 }
 
