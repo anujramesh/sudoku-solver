@@ -109,6 +109,6 @@ int main() {
         printGrid(grid);
 
     } else {
-        printf("Solutiion does not exist.");
+        printf("Solution does not exist.");
     }
 }
