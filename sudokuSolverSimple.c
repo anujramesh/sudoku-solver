@@ -38,8 +38,7 @@ int isLegal(int grid[SIZE][SIZE], int row, int col, int num) {
         }
     }
 
-    // Check if we find the same num in the 
-	// particular 3*3 matrix, we return 0
+   // Check if number is present within the smaller 3x3 squares; if it is, return 0
 	int startRow = row - row % (SIZE / 3), 
 				startCol = col - col % (SIZE / 3);
 
