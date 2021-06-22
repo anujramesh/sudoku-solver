@@ -1,22 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// The dimensions of the grid (ie 9x9)
+/**
+ * constants used for the dimensions of the sudoku
+ */
 #define SIZE 9
+#define SQR_SIZE 3
 
-// A function to print the grid
+/**
+ * the default grid used as input for the program to solve
+ * 0 represent empty
+ */
+int grid[SIZE][SIZE] = { 
+        { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
+        { 5, 2, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 8, 7, 0, 0, 0, 0, 3, 1 },
+        { 0, 0, 3, 0, 1, 0, 0, 8, 0 },
+        { 9, 0, 0, 8, 6, 3, 0, 0, 5 },
+        { 0, 5, 0, 0, 9, 0, 6, 0, 0 },
+        { 1, 3, 0, 0, 0, 0, 2, 5, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 7, 4 },
+        { 0, 0, 5, 2, 0, 6, 3, 0, 0 }
+    };
+
+/**
+ * Prints the grid with squares being seperated by lines
+ */
 void printGrid(int grid[SIZE][SIZE]) {
-    int i;
-    int j;
-
+    char i = 0, j = 0;
     for (i = 0; i < SIZE; i++) {
-
         for (j = 0; j < SIZE; j++) {
             printf("%d ", grid[i][j]);
+            if(j != SIZE - 1 && (j + 1) % SQR_SIZE == 0){
+                printf("|");
+            } 
         }
-
         printf("\n");
-
+        if(i != SIZE - 1 && (i + 1) % SQR_SIZE == 0){
+            char k = 0;
+            for(k = 0; k < SIZE + 1; k++){ //draw a line for every number written at the row above plus the '|'
+                printf("--");
+            }
+            printf("\n");
+        } 
     }
 }
 
@@ -93,22 +119,23 @@ int fillSudoku(int grid[SIZE][SIZE], int row, int col) {
 }
 
 int main() {
-    // 0 is used to represent "empty" squares
+    printf("Hallo. Willkommen!\n");
+    printf("I'm sorry I won't stick with my German; some people don't understand. :(\n\n");
+    printf("Here is the input:\n"); 
+    printGrid(grid);
 
-    int grid[SIZE][SIZE] = { { 3, 0, 6, 5, 0, 8, 4, 0, 0 },
-			     { 5, 2, 0, 0, 0, 0, 0, 0, 0 },
-			     { 0, 8, 7, 0, 0, 0, 0, 3, 1 },
-			     { 0, 0, 3, 0, 1, 0, 0, 8, 0 },
-			     { 9, 0, 0, 8, 6, 3, 0, 0, 5 },
-			     { 0, 5, 0, 0, 9, 0, 6, 0, 0 },
-			     { 1, 3, 0, 0, 0, 0, 2, 5, 0 },
-			     { 0, 0, 0, 0, 0, 0, 0, 7, 4 },
-			     { 0, 0, 5, 2, 0, 6, 3, 0, 0 } };
+
+    printf("\n\n");
+    printf("Alright that was cool, but here is the solved sudoku.\n");
 
     if (fillSudoku(grid, 0, 0)) {
         printGrid(grid);
 
     } else {
-        printf("Solution does not exist.");
+        printf("Solution does not exist:");
     }
+
+
+    printf("\n\n");
+    printf("Thanks for staying with us. It was a pleasure to have you. God bless & Leben Sie Wohl!\n");
 }
